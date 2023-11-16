@@ -1,0 +1,32 @@
+<button type="button" (click)="changeMode('edit')">{{mode}}</button>
+<button type="button" (click)="changeMode('add')">{{mode}}</button>
+<ng-container *ngIf="mode==='Edit' then display else (mode==='Add' ? add : edit)"></ng-container>
+<ng-template #display>
+  <p>Id : {{todo.id}}</p>
+  <p>Contenu : {{todo.content}}</p>
+  <p>Etat : {{todo.etat}}</p>
+  <p>Date de création : {{todo.creation}}</p>
+  <div class="content">Contenu :
+    <a class="contenu"
+       dir=>Contenu {{todo.content}}</a>
+  </div>
+</ng-template>
+<ng-template #edit>
+  <form (ngSubmit)="update()">
+    <label for="id">Id : </label><input [(ngModel)]="todo.id" id="id" name="id">
+    <label for="content">contenu :</label><input [(ngModel)]="todo.content" id="content" name="content">
+    <label for="etat">Etat :</label><input [(ngModel)]="todo.etat" id="etat" name="etat">
+    <label for="date">Date de création :</label><input [(ngModel)]="todo.creation" id="date" name="date">
+    <button type="submit">Envoyer</button><button type="reset">Reset</button>
+  </form>
+</ng-template>
+
+<ng-template #add>
+  <form (ngSubmit)="create()">
+    <label for="id">Id : </label><input [(ngModel)]="" id="newId" name="id">
+    <label for="content">contenu :</label><input [(ngModel)]="" id="newContent" name="content">
+    <label for="etat">Etat :</label><input [(ngModel)]="" id="NewEtat" name="Etat">
+    <label for="date">Date de création :</label><input [(ngModel)]="" id="newDate" name="date">
+    <button type="submit">Envoyer</button><button type="reset">Reset</button>
+  </form>
+</ng-template>
