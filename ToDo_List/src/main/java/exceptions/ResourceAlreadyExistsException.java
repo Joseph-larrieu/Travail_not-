@@ -1,4 +1,4 @@
-package geiffel.da4.issuetracker.exceptions;
+package exceptions;
 
 public class ResourceAlreadyExistsException extends RuntimeException {
     public ResourceAlreadyExistsException(String resourceName, Object identifier) {
